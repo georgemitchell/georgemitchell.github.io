@@ -58,7 +58,7 @@
 /* Categories
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .categories {
-  background-image: url('../images/values-bg.jpg');
+  background-image: url('../images/threes-bg.jpg');
   background-size: cover;
   color: #fff;
 }
@@ -132,7 +132,7 @@
 /* Bigger than 1000 */
 @media (min-width: 1000px) {
   .section {
-    padding: 20rem 0 9rem;
+    padding: 10rem 0 9rem;
   }
   .section.intro {
     padding: 10rem 0 9rem;

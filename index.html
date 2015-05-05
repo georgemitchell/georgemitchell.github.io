@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <title>George's Birthday | George gets old</title>
   <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="author" content="George Mitchell">
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -23,9 +23,11 @@
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/custom.css">
 
+  <link rel="stylesheet" href="css/flipclock.css">
   <!-- Scripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="js/flipclock.js"></script>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -58,15 +60,37 @@
     <h3>(sort of)</h3>
     <h5>June 20, 2015<h5>
   </div>
-
     
-  </div>
+    	<div class="flip-counter clock flip-clock-wrapper"></div>
+    	<script type="text/javascript">
+			var clock;
 
-  <div class="section hero">
+			$(document).ready(function() {
+
+				// Grab the current date
+				var currentDate = new Date();
+
+				// Set some date in the future. In this case, it's always Jan 1
+				var futureDate  = new Date(2015, 5, 20, 7, 0, 0);
+
+				// Calculate the difference in seconds between the future and current date
+				var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+				// Instantiate a coutdown FlipClock
+				clock = $('.clock').FlipClock(diff, {
+					clockFace: 'DailyCounter',
+					countdown: true
+				});
+			});
+		</script>
+
+
+  <div class="section">
     <div class="container">
       <div class="row">
         <div class="video-container">
-        <iframe width="420" height="315" src="https://www.youtube.com/embed/s9a90dTZAt0" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/HjMsbyc1qQw" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -105,29 +129,35 @@
     </div>
   </div>
 
-  <div class="section get-help">
+  <div class="section testimonials">
     <div class="container">
-      <h3 class="section-heading">Need further convincing?</h3>
-      <p class="section-description">Skeleton is an amazingly easy place to start with responsive development. If you want to learn more, just visit the documentation!</p>
-      <a class="button button-primary" href="http://getskeleton.com">View Skeleton Docs</a>
+      <h3 class="section-heading">Don't just take my word that it's gonna be RAD</h3>
+      <div class="row">
+        <div class="one-third column value">
+          <img class="u-max-full-width" src="images/mom.png" />
+          <h2 class="value-multiplier">My Mom</h2>
+          <h5 class="value-heading">Staples Rewards Member</h5>
+          <p class="value-description">George, do you have a facebook?  I have a facebook now. 
+          	Are you going to invite your aunts?</p>
+        </div>
+        <div class="one-third column value">
+          <h2 class="value-multiplier"><img src="images/barack.png" /></h2>
+          <h2 class="value-multiplier">Barack Obama</h2>
+          <h5 class="value-heading">Washington D.C. Resident</h5>
+          <p class="value-description">I'm trying to figure out which is a more monumental
+           event... George's birthday party or that time I was elected president.  Right now it's a toss-up.</p>
+        </div>
+        <div class="one-third column value">
+          <h2 class="value-multiplier"><img src="images/kim.png" /></h2>
+          <h2 class="value-multiplier">Kim Kardashian</h2>
+          <h5 class="value-heading">North West's Mom</h5>
+          <p class="value-description">I'm so honored to be a part of this historic and fashionable soiree.</p>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="section categories">
-    <div class="container">
-      <h3 class="section-heading">Responsive Images</h3>
-      <p class="section-description">Skeleton images sit easily in grid with .u-max-full-width class. I suggest exploring solution to serving different images based on device size.</p>
-      <div class="row">
-        <div class="one-half column category">
-          <img class="u-max-full-width" src="images/placeholder.png">
-        </div>
-        <div class="one-half column category">
-          <img class="u-max-full-width" src="images/placeholder.png">
-        </div>
-      </div>
-    </div>
-
-  <div class="section bucketlist">
     <div class="container">
       <h3 class="section-heading">Bucket List</h3>
       <p class="section-description">I only have two items left on my bucket list, help me cross off one of them!</p>
@@ -135,11 +165,38 @@
         <ul>
           <li>Throw Epic Party</li>
           <li>Heli-ski in British Columbia</li>
+          <li><s>Completely fail at marriage</s></li>
+          <li><s>Binge watch Breaking Bad in an insanely short amount of time</s></li>
+          <li><s>Take a computer class</s></li>
+          <li><s>Learn what the different numbers of bells mean at Trader Joe's</s></li>
+          <li><s>Get more than 10 followers on instagram</s></li>
+          <li><s>Reorganize junk drawer</s></li>
         </ul>
       </div>
     </div>
 
   </div>
+
+  <div class="section response">
+    <div class="container">
+		<form class="form-inline">
+		  <div class="form-group">
+		    <label for="input_name">Name</label>
+		    <input type="text" class="form-control" id="input_name" placeholder="Jane Doe">
+		  </div>
+		  <div class="form-group">
+		    <label for="input_email">Email</label>
+		    <input type="email" class="form-control" id="input_email" placeholder="jane.doe@example.com">
+		  </div>
+		  <div class="form-group">
+		    <label for="input_total_guests">Total Attending</label>
+		    <input type="email" class="form-control" id="input_total_guests" placeholder="1">
+		  </div>
+		  <button type="submit" class="btn btn-default">Send invitation</button>
+		</form>
+	</div>
+</div>
+
 
 
 
