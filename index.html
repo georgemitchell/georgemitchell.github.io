@@ -23,15 +23,25 @@
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/custom.css">
 
-  <link rel="stylesheet" href="css/flipclock.css">
+  <!-- <link rel="stylesheet" href="css/flipclock.css"> -->
+  <link href="css/mb-comingsoon.min.css" rel="stylesheet" />
+
   <!-- Scripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="js/flipclock.js"></script>
+  <script src="js/jquery.mb-comingsoon.min.js"></script>
+
+  <!-- <script src="js/flipclock.js"></script> -->
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <script>
+	$(document).ready(function(){
+	    $("#num_attending").load("http://georgemitchell.site90.com/stats.php");
+	});
+  </script>
 
 </head>
 <body>
@@ -39,51 +49,28 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-  <!--
-  <div class="section hero">
-    <div class="container">
-      <div class="row">
-        <div class="one-half column">
-          <h4 class="hero-heading">Stop coding non-responsive sites. Let users view sites from anywhere.</h4>
-          <a class="button button-primary" href="http://getskeleton.com">Try Skeleton</a>
-        </div>
-        <div class="one-half column phones">
-          <img class="phone" src="images/fc.png">
-          <img class="phone" src="images/fc.png">
-        </div>
-      </div>
-    </div>
-  </div>
-  -->
   <div class="section intro">
     <h1>George's Birthday</h1>
     <h3>(sort of)</h3>
     <h5>June 20, 2015<h5>
-  </div>
+    <div class="row centered text-center" id="countdown" style="background-color:#cdcdcd"></div>
+    <script type="text/javascript">
+        $(function () {
+            var $section = $('section');
+            $(window).on("resize", function () {
+                var dif = Math.max($(window).height() - $section.height(), 0);
+                var padding = Math.floor(dif / 2) + 'px';
+                $section.css({ 'padding-top': padding, 'padding-bottom': padding });
+            }).trigger("resize");
+            $('#countdown').mbComingsoon(new Date(2015, 5, 20, 7, 00));
+            setTimeout(function () {
+                $(window).resize();
+            }, 200);
+        });
+
+    </script>
     
-    	<div class="flip-counter clock flip-clock-wrapper"></div>
-    	<script type="text/javascript">
-			var clock;
-
-			$(document).ready(function() {
-
-				// Grab the current date
-				var currentDate = new Date();
-
-				// Set some date in the future. In this case, it's always Jan 1
-				var futureDate  = new Date(2015, 5, 20, 7, 0, 0);
-
-				// Calculate the difference in seconds between the future and current date
-				var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
-
-				// Instantiate a coutdown FlipClock
-				clock = $('.clock').FlipClock(diff, {
-					clockFace: 'DailyCounter',
-					countdown: true
-				});
-			});
-		</script>
-
+  </div>
 
   <div class="section">
     <div class="container">
@@ -131,7 +118,10 @@
 
   <div class="section testimonials">
     <div class="container">
-      <h3 class="section-heading">Don't just take my word that it's gonna be RAD</h3>
+      <h3 class="section-heading">
+      	Don't just take my word that it's gonna be RAD. <br />
+      	Hear what 3 of the <span id="num_attending"><blink>...</blink></span> people who are coming have to say.
+      </h3>
       <div class="row">
         <div class="one-third column value">
           <img class="u-max-full-width" src="images/mom.png" />
@@ -177,26 +167,26 @@
 
   </div>
 
+  
   <div class="section response">
-    <div class="container">
-		<form class="form-inline">
-		  <div class="form-group">
-		    <label for="input_name">Name</label>
-		    <input type="text" class="form-control" id="input_name" placeholder="Jane Doe">
-		  </div>
-		  <div class="form-group">
-		    <label for="input_email">Email</label>
-		    <input type="email" class="form-control" id="input_email" placeholder="jane.doe@example.com">
-		  </div>
-		  <div class="form-group">
-		    <label for="input_total_guests">Total Attending</label>
-		    <input type="email" class="form-control" id="input_total_guests" placeholder="1">
-		  </div>
-		  <button type="submit" class="btn btn-default">Send invitation</button>
-		</form>
-	</div>
-</div>
-
+    <div class="row centered text-center">
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="input_name">Name</label>
+        <input type="text" class="form-control" id="input_name" placeholder="Jane Doe">
+      </div>
+      <div class="form-group">
+        <label for="input_email">Email</label>
+        <input type="email" class="form-control" id="input_email" placeholder="jane.doe@example.com">
+      </div>
+      <div class="form-group">
+        <label for="input_total_guests">Total Attending</label>
+        <input type="email" class="form-control" id="input_total_guests" placeholder="1">
+      </div>
+      <button type="submit" class="btn btn-default">Respond</button>
+    </form>
+    </div>
+  </div>
 
 
 
