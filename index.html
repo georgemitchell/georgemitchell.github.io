@@ -56,7 +56,7 @@
           function(value, element, params) {
             if(element.value > 0)
             {
-              var email = $( "input.email" ).val();
+              var email = $( "#email" ).val();
               if((email == null) || (email == ""))
               {
                 return false;
@@ -94,8 +94,7 @@
           submitHandler: function(form) {
               $("#rsvp").html('<div class="row"><img src="images/ajax-loader.gif" /></div>');
               var payload = $(form).serialize();
-              alert(payload);
-              $.post('http://invitations.local/rsvp.php', payload)
+              $.post('http://georgemitchell.site90.com/rsvp.php', payload)
                 .done(function( data ) {
                   $('#rsvp').html(data);
                 });
